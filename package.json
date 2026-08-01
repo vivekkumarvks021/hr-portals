@@ -7,6 +7,10 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "echo \"Configure later\""
+    "dev": "echo \"Configure later\"",
+    "dev:shell": "npm run dev --workspace=shell",
+    "dev:employee": "npm run dev --workspace=employee",
+    "dev:leave": "npm run dev --workspace=leave",
+    "dev:payroll": "npm run dev --workspace=payroll"
   }
 }

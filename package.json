@@ -12,5 +12,10 @@
     "dev:employee": "npm run dev --workspace=employee",
     "dev:leave": "npm run dev --workspace=leave",
     "dev:payroll": "npm run dev --workspace=payroll"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.2.0",
+    "typescript": "^5.9.2",
+    "vite": "^7.3.6"
   }
 }

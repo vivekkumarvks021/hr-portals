@@ -1,10 +1,8 @@
+import EmployeeRoutes from "./routes";
+
 function App() {
-  return (
-    <div>
-      <h2>Employee Micro Frontend 🚀</h2>
-      <p>Loaded from Employee Remote</p>
-    </div>
-  );
+  console.log("Is Loaded");
+  return <h1>Employee Loaded Demo</h1>;
 }
 
 export default App;

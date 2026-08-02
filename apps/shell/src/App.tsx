@@ -1,16 +1,20 @@
-import { Suspense, lazy } from "react";
+// import AppRoutes from "./routes";
+
+// function App() {
+//   return <AppRoutes />;
+// }
+
+// export default App;
+
+import { lazy, Suspense } from "react";
 
 const EmployeeApp = lazy(() => import("employee/App"));
 
 function App() {
   return (
-    <div>
-      <h1>Shell Application</h1>
-
-      <Suspense fallback={<h2>Loading Employee...</h2>}>
-        <EmployeeApp />
-      </Suspense>
-    </div>
+    <Suspense fallback={<h1>Loading...</h1>}>
+      <EmployeeApp />
+    </Suspense>
   );
 }
 

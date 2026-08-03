@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "../pages/Home";
 
-const EmployeeRoutes = lazy(() => import("employee/App"));
+const EmployeeRoutes = lazy(() => import("employee/EmployeeRoutes"));
 
 export default function AppRoutes() {
   return (

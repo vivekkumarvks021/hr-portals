@@ -10,14 +10,17 @@ export default defineConfig({
       name: "employee",
       filename: "remoteEntry.js",
       exposes: {
-        // "./Routes": "./src/routes/index.tsx",
-        "./App": "./src/App.tsx",
+        "./EmployeeRoutes": "./src/routes/index.tsx",
+        // "./App": "./src/App.tsx",
       },
       shared: {
         react: {
           singleton: true,
         },
         "react-dom": {
+          singleton: true,
+        },
+        "react-router-dom": {
           singleton: true,
         },
       },

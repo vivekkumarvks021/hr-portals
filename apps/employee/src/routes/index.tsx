@@ -4,10 +4,14 @@ import EmployeeList from "../pages/EmployeeList";
 import AddEmployee from "../pages/AddEmployee";
 import EditEmployee from "../pages/EditEmployee";
 
-export default function EmployeeRoutes() {
+type Props = {
+  isStandalone?: boolean;
+};
+
+export default function EmployeeRoutes({ isStandalone = true }: Props) {
   return (
     <Routes>
-      <Route path="/" element={<EmployeeLayout />}>
+      <Route path="/" element={<EmployeeLayout isStandalone={isStandalone} />}>
         <Route index element={<EmployeeList />} />
         <Route path="add" element={<AddEmployee />} />
         <Route path="edit/:id" element={<EditEmployee />} />

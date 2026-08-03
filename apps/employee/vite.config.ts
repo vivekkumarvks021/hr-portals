@@ -23,6 +23,24 @@ export default defineConfig({
         "react-router-dom": {
           singleton: true,
         },
+        axios: {
+          singleton: true,
+        },
+        "@mui/material": {
+          singleton: true,
+        },
+
+        "@mui/icons-material": {
+          singleton: true,
+        },
+
+        "@emotion/react": {
+          singleton: true,
+        },
+
+        "@emotion/styled": {
+          singleton: true,
+        },
       },
     }),
   ],

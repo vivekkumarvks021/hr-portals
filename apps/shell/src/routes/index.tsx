@@ -10,7 +10,10 @@ export default function AppRoutes() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        <Route path="/employees/*" element={<EmployeeRoutes />} />
+        <Route
+          path="/employees/*"
+          element={<EmployeeRoutes isStandalone={false} />}
+        />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

@@ -1,11 +1,27 @@
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
+type EmployeeLayoutProps = {
+  isStandalone?: boolean;
+};
 
-export default function EmployeeLayout() {
+export default function EmployeeLayout({ isStandalone }: EmployeeLayoutProps) {
+  const addEmpUrl = `${isStandalone ? "" : "/employees"}/add`;
   return (
-    <div>
-      <h2>Employee Module</h2>
+    <div style={{ padding: "20px" }}>
+      <h1>Employee Management</h1>
 
-      {/* Future Employee Navigation */}
+      <nav
+        style={{
+          display: "flex",
+          gap: "16px",
+          marginBottom: "20px",
+        }}
+      >
+        <NavLink to={isStandalone ? "/" : "/employees"}>Employee List</NavLink>
+
+        <NavLink to={addEmpUrl}>Add Employee</NavLink>
+      </nav>
+
+      <hr />
 
       <Outlet />
     </div>

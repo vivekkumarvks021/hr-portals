@@ -41,6 +41,14 @@ export default defineConfig({
         "@emotion/styled": {
           singleton: true,
         },
+
+        "@reduxjs/toolkit": {
+          singleton: true,
+        },
+
+        "react-redux": {
+          singleton: true,
+        },
       },
     }),
   ],

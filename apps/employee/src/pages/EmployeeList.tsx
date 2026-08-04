@@ -1,29 +1,35 @@
-import { useEffect, useState } from "react";
-
-import type { Employee } from "../types/employee";
-import { deleteEmployee, getEmployees } from "../services/employeeService";
+import { useEffect } from "react";
 import EmployeeTable from "../components/EmployeeTable";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import {
+  deleteEmployee,
+  fetchEmployees,
+} from "../features/employee/employeeSlice";
 
 export default function EmployeeList() {
-  const [employees, setEmployees] = useState<Employee[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { employees, loading, error } = useAppSelector(
+    (state) => state.employee,
+  );
+
   const navigate = useNavigate();
 
-  useEffect(() => {
-    loadEmployees();
-  }, []);
+  const dispatch = useAppDispatch();
 
-  const loadEmployees = async () => {
-    try {
-      const data = await getEmployees();
-      setEmployees(data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  useEffect(() => {
+    dispatch(fetchEmployees());
+  }, [dispatch]);
+
+  //   const loadEmployees = async () => {
+  //     try {
+  //       const data = await getEmployees();
+  //       setEmployees(data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
   const handleEdit = (id: string) => {
     navigate(`edit/${id}`);
@@ -37,9 +43,9 @@ export default function EmployeeList() {
     if (!confirmed) return;
 
     try {
-      await deleteEmployee(id);
+      await dispatch(deleteEmployee(id)).unwrap();
 
-      await loadEmployees();
+      dispatch(fetchEmployees());
     } catch (error) {
       console.error(error);
     }

@@ -1,21 +1,26 @@
 import { lazy, Suspense } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./../components/layout/Layout";
 import Home from "../pages/Home";
 
-const EmployeeRoutes = lazy(() => import("employee/EmployeeRoutes"));
+const EmployeeApp = lazy(() => import("employee/EmployeeApp"));
 
 export default function AppRoutes() {
   return (
-    <Suspense fallback={<div>Loading Employee...</div>}>
+    <Suspense fallback={<div>Loading...</div>}>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
 
-        <Route
-          path="/employees/*"
-          element={<EmployeeRoutes isStandalone={false} />}
-        />
+          <Route
+            path="employees/*"
+            element={<EmployeeApp isStandalone={false} />}
+          />
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="leave" element={<h2>Leave Module</h2>} />
+
+          <Route path="payroll" element={<h2>Payroll Module</h2>} />
+        </Route>
       </Routes>
     </Suspense>
   );

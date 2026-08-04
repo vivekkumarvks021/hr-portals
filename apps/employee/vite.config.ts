@@ -10,7 +10,8 @@ export default defineConfig({
       name: "employee",
       filename: "remoteEntry.js",
       exposes: {
-        "./EmployeeRoutes": "./src/routes/index.tsx",
+        "./EmployeeApp": "./src/RemoteRoot.tsx",
+        // "./EmployeeRoutes": "./src/RemoteRoot.tsx",
         // "./App": "./src/App.tsx",
       },
       shared: {

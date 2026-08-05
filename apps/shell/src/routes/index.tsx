@@ -4,6 +4,7 @@ import Layout from "./../components/layout/Layout";
 import Home from "../pages/Home";
 
 const EmployeeApp = lazy(() => import("employee/EmployeeApp"));
+const LeaveApp = lazy(() => import("leave/LeaveApp"));
 
 export default function AppRoutes() {
   return (
@@ -17,7 +18,7 @@ export default function AppRoutes() {
             element={<EmployeeApp isStandalone={false} />}
           />
 
-          <Route path="leave" element={<h2>Leave Module</h2>} />
+          <Route path="leave/*" element={<LeaveApp />} />
 
           <Route path="payroll" element={<h2>Payroll Module</h2>} />
         </Route>

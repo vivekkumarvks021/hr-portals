@@ -1,5 +1,7 @@
+import LeaveRoutes from "./routes";
+
 function App() {
-  return <h1>Leave App</h1>;
+  return <LeaveRoutes />;
 }
 
 export default App;

@@ -17,6 +17,13 @@ export default defineConfig({
           entryGlobalName: "employee",
           shareScope: "default",
         },
+        leave: {
+          type: "module",
+          name: "leave",
+          entry: "http://localhost:3002/remoteEntry.js",
+          entryGlobalName: "leave",
+          shareScope: "default",
+        },
       },
 
       shared: {

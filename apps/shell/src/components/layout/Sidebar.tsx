@@ -16,6 +16,7 @@ import { NavLink } from "react-router-dom";
 
 type Props = {
   drawerWidth: number;
+  open: boolean;
 };
 
 const menus = [
@@ -41,25 +42,27 @@ const menus = [
   },
 ];
 
-export default function Sidebar({ drawerWidth }: Props) {
+export default function Sidebar({ drawerWidth, open }: Props) {
   return (
     <Drawer
-      variant="permanent"
+      variant="persistent"
+      anchor="left"
+      open={open}
       sx={{
-        width: drawerWidth,
+        width: open ? drawerWidth : 0,
+        flexShrink: 0,
         "& .MuiDrawer-paper": {
-          width: drawerWidth,
+          width: open ? drawerWidth : 0,
           boxSizing: "border-box",
+          top: "64px",
+          height: "calc(100% - 64px)",
         },
       }}
     >
-      <Toolbar />
-
       <List>
         {menus.map((menu) => (
           <ListItemButton key={menu.path} component={NavLink} to={menu.path}>
             <ListItemIcon>{menu.icon}</ListItemIcon>
-
             <ListItemText primary={menu.label} />
           </ListItemButton>
         ))}

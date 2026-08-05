@@ -1,10 +1,36 @@
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
 
-export default function Header() {
+type Props = {
+  drawerWidth: number;
+  open: boolean;
+  onToggle: () => void;
+};
+
+export default function Header({ drawerWidth, open, onToggle }: Props) {
   return (
-    <AppBar position="fixed">
+    <AppBar
+      position="fixed"
+      sx={{
+        zIndex: (theme) => theme.zIndex.drawer + 1,
+        transition: "all 0.3s ease",
+        width: open ? `calc(100% - ${drawerWidth}px)` : "100%",
+        ml: open ? `${drawerWidth}px` : 0,
+      }}
+    >
       <Toolbar>
-        <Typography variant="h6">HR Portal</Typography>
+        <IconButton
+          color="inherit"
+          edge="start"
+          onClick={onToggle}
+          sx={{ mr: 2 }}
+        >
+          <MenuIcon />
+        </IconButton>
+
+        <Typography variant="h6" noWrap>
+          HR Portal
+        </Typography>
       </Toolbar>
     </AppBar>
   );
